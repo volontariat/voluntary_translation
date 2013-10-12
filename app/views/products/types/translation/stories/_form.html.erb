@@ -1,0 +1,23 @@
+<% content_for(:javascript_includes) { javascript_include_tag 'voluntary_translation/stories' } %>
+
+<%= simple_form_for(@story, html: {class: 'form-vertical'}) do |f| %>
+  <%= render partial: 'shared/form/error_messages', locals: { resource: @story } %>
+  
+  <% unless @story.new_record? %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+  <% end %>
+  
+  <div class="form-inputs">
+    <%= @story.project ? f.hidden_field(:project_id) : f.input(:project_id, collection: Project.all) %> 
+    <%= f.input :name %>  
+    <%= f.input :text, as: :text, input_html: {style: 'width:500px; height:100px;'} %>
+    <%= f.input :input_language, collection: all_language_options %>
+    <%= f.input :output_language_tokens, as: :string, input_html: { data: { load: resource.output_language_tokens } } unless Rails.env == 'test' %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

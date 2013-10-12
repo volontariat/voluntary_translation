@@ -1,0 +1,35 @@
+<%= simple_form_for(@story, @step_presenter.form_options) do |f| %>
+  <%= render partial: 'shared/form/error_messages', locals: { resource: @story } %>
+  <% if step == :setup_tasks %>
+  <input type="hidden" name="next_step" value="1"/>
+  <% end %>
+  
+  <div class="form-actions">
+    <div class="control-group string required" style="display: block">
+      <div class="controls">
+        <%= f.button :submit, t('stories.steps.setup_tasks.update') %>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to_add_fields(
+          t('stories.steps.setup_tasks.add_column'), f, :columns, target: 'setup_columns_input'
+        ) %>
+      </div>
+    </div>
+  </div>
+  
+  <div id="setup_columns_input" class="form-inputs">
+    <%= f.simple_fields_for :columns do |column_form| %>
+      <%= render_product_specific_partial_if_available(
+        column_form.object, 'stories/column_fields', f: column_form
+      ) %>
+    <% end %>
+  </div>
+  
+  <div class="form-actions">
+    <div class="control-group string required" style="display: block">
+      <div class="controls">
+        <%= f.button :submit, t('stories.steps.setup_tasks.update') %>
+      </div>
+    </div>
+  </div>
+<% end %>
