@@ -12,7 +12,7 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-
+dummy/log
 # YARD artifacts
 .yardoc
 _yardoc
