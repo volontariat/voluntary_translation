@@ -6,7 +6,7 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem 'voluntary', '0.1.0.rc4', path: './local_gems/voluntary'
+gem 'voluntary', '0.1.0', path: './local_gems/voluntary'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
