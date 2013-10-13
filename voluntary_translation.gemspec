@@ -7,13 +7,13 @@ require "voluntary_translation/version"
 Gem::Specification.new do |s|
   s.name        = "voluntary_translation"
   s.version     = VoluntaryTranslation::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of VoluntaryTranslation."
-  s.description = "TODO: Description of VoluntaryTranslation."
+  s.authors     = ["Mathias Gawlista"]
+  s.email       = ["gawlista@gmail.com"]
+  s.homepage    = "http://github.com/volontariat/voluntary_translation"
+  s.summary     = "Translation product for crowdsourcing engine voluntary."
+  s.description = "Translation product for crowdsourcing engine voluntary."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["CHANGELOG.md", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency 'voluntary', '0.1.0'
 end
