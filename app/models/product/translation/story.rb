@@ -24,7 +24,7 @@ class Product::Translation::Story < Story
   end
   
   def self.for_user(user)
-    active.where(:languages.in => user.languages)
+    active.where(:output_languages.in => user.languages)
   end
   
   def output_language_tokens=(tokens)
@@ -61,7 +61,7 @@ class Product::Translation::Story < Story
     output_languages.each do |output_language|
       columns.each do |column|
         tasks.create!(
-          name: column.key, text: column.text,
+          column_id: column.id, name: column.key, text: column.text,
           input_language: input_language, output_language: output_language
         )
       end
