@@ -1,0 +1,19 @@
+<h3><%= resource.name %></h3>
+
+<strong><%= t('activerecord.attributes.general.state') %>:</strong> <%= resource.state %> 
+
+<strong><%= t('activerecord.attributes.task.input_language') %>:</strong> <%= resource.input_language %> 
+
+<strong><%= t('activerecord.attributes.task.output_language') %>:</strong> <%= resource.output_language %> 
+ 
+<h4><%= t('tasks.show.story_text') %></h4>
+
+<%= resource.story.text %>
+
+<% if resource.text.present? %>
+<h4><%= t('tasks.show.text') %></h4>
+
+<%= resource.text %>
+<% end %>
+
+<h4><%= t('activerecord.models.result') %></h4>

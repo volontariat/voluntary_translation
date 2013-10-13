@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    attributes:
+      task:
+        input_language: Input Language
+        output_language: Output Language
