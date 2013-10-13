@@ -9,12 +9,14 @@ class Product::Translation::Task < ::Task
   validates :input_language, presence: true
   validates :output_language, presence: true
   
-  attr_accessible :input_language, :output_language
+  attr_accessible :column_id, :input_language, :output_language
   
   protected
   
   # validates :name, presence: true, uniqueness: { scope: [:story_id, :output_language] }
   def name_valid?
+    return unless name_changed?
+    
     if name.present?
       if Task.where(name: name, story_id: story_id, output_language: output_language).any?
         errors.add(:name, I18n.t('errors.messages.taken'))
