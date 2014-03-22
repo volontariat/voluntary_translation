@@ -6,7 +6,7 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem 'voluntary', '0.1.0', path: './local_gems/voluntary'
+gem 'voluntary', '~> 0.2.0'
 
 # view
 gem "will_paginate", :github => "mislav/will_paginate"

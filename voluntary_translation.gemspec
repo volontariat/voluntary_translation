@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["CHANGELOG.md", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency 'voluntary', '0.1.0'
+  s.add_dependency 'voluntary', '~> 0.2.0'
 end
