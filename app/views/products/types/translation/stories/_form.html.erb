@@ -1,6 +1,6 @@
 <% content_for(:javascript_includes) { javascript_include_tag 'voluntary_translation/stories' } %>
 
-<%= simple_form_for(@story, html: {class: 'form-vertical'}) do |f| %>
+<%= simple_form_for(@story, as: :story, url: @story.new_record? ? stories_path : story_path(@story.becomes(Story)), html: {class: 'form-vertical'}) do |f| %>
   <%= render partial: 'shared/form/error_messages', locals: { resource: @story } %>
   
   <% unless @story.new_record? %>
