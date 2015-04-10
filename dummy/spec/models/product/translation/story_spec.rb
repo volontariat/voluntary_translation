@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Product::Translation::Story do
   it 'principally works' do
-    story = FactoryGirl.create(:story)
+    story = FactoryGirl.create(:translation_story, task_factory: nil)
     
     story.columns_attributes = {
       "1381503320860"=>{"key"=>"franchises.text", "text"=>"Text", "_destroy"=>"0"}, 

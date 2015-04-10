@@ -2,7 +2,9 @@
 #
 # Install the pg driver:
 #   gem install pg
-# On Mac OS X with macports:
+# On OS X with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On OS X with MacPorts:
 #   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
 # On Windows:
 #   gem install pg
@@ -13,17 +15,20 @@
 # gem 'pg'
 #
 development:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
   database: voluntary_translation_development
   pool: 5
-  username: vagrant
+  username: root
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
   #host: localhost
+
+  # The TCP port the server listens on. Defaults to 5432.
+  # If your server runs on a different port number, change accordingly.
   #port: 5432
 
   # Schema search path. The server defaults to $user,public
@@ -32,27 +37,27 @@ development:
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
   #   log, notice, warning, error, fatal, and panic
-  # The server defaults to notice.
-  #min_messages: warning
+  # Defaults to warning.
+  #min_messages: notice
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  adapter: postgresql
-  encoding: unicode
+test: &TEST
+  adapter: mysql2
+  encoding: utf8
   database: voluntary_translation_test
   pool: 5
-  username: vagrant
+  username: root
   password:
-  lc_collate: utf8
-  lc_ctype: utf8
-  template: template0
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2 
+  encoding: utf8
   database: voluntary_translation_production
   pool: 5
-  username: vagrant
+  username: root
   password:
+
+cucumber:
+ <<: *TEST

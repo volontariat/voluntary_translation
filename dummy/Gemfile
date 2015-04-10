@@ -1,75 +1,53 @@
-source "http://gems.github.com"
-source "http://rubygems.org"
+source 'http://gems.github.com'
+source 'http://rubygems.org'
 
-gemspec path: File.expand_path(File.dirname(__FILE__) + "/../")
+gemspec path: File.expand_path(File.dirname(__FILE__) + '/../')
 
-gem 'voluntary', '0.1.0', path: '../local_gems/voluntary'
+gem 'voluntary', github: 'volontariat/voluntary', branch: 'rails_4.2.1' #path: '../../voluntary'
 
-gem "rack-cors", "~> 0.2.4", :require => "rack/cors"
-gem "thin", "~> 1.3.1", :require => false
-gem "settingslogic", :git => "https://github.com/binarylogic/settingslogic.git"
-gem "acts_as_markup", :git => "git://github.com/vigetlabs/acts_as_markup.git"
-gem "auto_html", :git => "git://github.com/Applicat/auto_html"
-gem "recaptcha", :require => "recaptcha/rails"
-gem "sinatra", :require => false
-gem "addressable", "~> 2.2", :require => "addressable/uri"
-gem "jasmine", :git => "https://github.com/pivotal/jasmine-gem.git"
-gem "zip"
+# core
+gem 'rack-cors', '~> 0.2.4', require: 'rack/cors'
+gem 'thin', '~> 1.3.1', require: false
 
-# view
-gem "will_paginate", :github => "mislav/will_paginate"
+# model 
+gem 'settingslogic', git: 'https://github.com/binarylogic/settingslogic.git'
+
+# view 
+gem 'acts_as_markup', git: 'git://github.com/vigetlabs/acts_as_markup.git'
+gem 'recaptcha', require: 'recaptcha/rails'
+
+# queue
+
+gem 'sinatra', require: false
+
+# URIs and HTTP
+
+gem 'addressable', '~> 2.2', require: 'addressable/uri'
+
+# test
+
+gem 'jasmine', git: 'https://github.com/pivotal/jasmine-gem.git'
 
 group :development do
-  gem "linecache", "0.46", :platforms => :mri_18
-  gem "capistrano", :require => false
-  gem "capistrano_colors", :require => false
-  gem "capistrano-ext", :require => false
-  gem "yard", :require => false
-  
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  # currently raises segmentation fault
-  #gem 'meta_request'
-  gem 'brakeman'
-  gem 'rails_best_practices'
-  gem 'sextant'
+  gem 'mysql2', '~> 0.3.13'
+  gem 'linecache', '0.46', platforms: :mri_18
+  gem 'yard', '~> 0.7', require: false
 end
 
 group :test do
-  gem 'capybara', '~> 1.1.2', :require => false
-  #gem 'capybara-webkit'
-  gem 'cucumber-rails', '1.3.0'
-  gem 'cucumber-rails-training-wheels'
-  gem 'timecop'
-  gem 'factory_girl_rails', '1.7.0'
-  gem 'fixture_builder', '0.3.3'
-  gem 'fuubar', '>= 1.0'
-  gem 'selenium-webdriver', '~> 2.22.1'
-  gem 'spork', '~> 1.0rc2'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'guard-cucumber'
-  gem 'launchy'
-  
-  gem "rspec-instafail", ">= 0.1.7", :require => false
-  gem "webmock", "~> 1.7", :require => false
-  gem "simplecov", :require => false
+  gem 'cucumber', '~> 1.3.18'
+  gem 'cucumber-rails', '~> 1.4.0', require: false
+  gem 'webmock', '~> 1.8.11', require: false
+  gem 'simplecov', '~> 0.7.1', require: false
+end
+
+group :test, :cucumber do
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development, :test do
-  gem "debugger", :platforms => :mri_19
-  gem "ruby-debug", :platforms => :mri_18
+  gem 'pry-byebug', '~> 3.1.0'
+  gem 'spring'
 end
 
-group :assets do
-  gem "therubyracer", :platforms => :ruby
-  gem "asset_sync", :require => nil
-end
-
-group :production do
-  gem "fastercsv", "1.5.5", :require => false
-  gem "rack-ssl", :require => "rack/ssl"
-  gem "rack-rewrite", "~> 1.2.1", :require => false
-  gem "rack-google-analytics", :require => "rack/google-analytics"
-  gem "rack-piwik", :require => false
-end
+gem 'therubyracer', '~> 0.12.0', platforms: :ruby

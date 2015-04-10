@@ -26,3 +26,143 @@ LINE 5:              WHERE a.attrelid = '"users"'::regclass
              ORDER BY a.attnum
 
 Connecting to database specified by database.yml
+Overwriting existing field _id in class Product.
+Overwriting existing field state in class Story.
+Overwriting existing field state in class Task.
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE (`users`.`id` IS NOT NULL) AND `users`.`slug` = 'user141396f' LIMIT 1[0m
+  [1m[35mUser Exists (1.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'user141396f' LIMIT 1
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'user1ed9432@volontari.at' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `users` (`name`, `email`, `first_name`, `last_name`, `country`, `language`, `interface_language`, `encrypted_password`, `slug`, `created_at`, `updated_at`) VALUES ('user141396f', 'user1ed9432@volontari.at', 'Mister', 'User141396f', 'Germany', 'en', 'en', '$2a$04$Pj4wFhWz.4VOX0O0hcdvFuawf2gEHE4tDFM9U1mR70M3yRV2I9bRi', 'user141396f', '2015-04-10 17:25:20', '2015-04-10 17:25:20')
+  [1m[36mRole Load (1.0ms)[0m  [1mSELECT  `roles`.* FROM `roles` WHERE `roles`.`name` = 'User' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `roles` (`name`, `created_at`, `updated_at`) VALUES ('User', '2015-04-10 17:25:20', '2015-04-10 17:25:20')
+  [1m[36mSQL (15.0ms)[0m  [1mUPDATE `users` SET `name` = 'user141396f', `email` = 'user1ed9432@volontari.at', `first_name` = 'Mister', `last_name` = 'User141396f', `country` = 'Germany', `language` = 'en', `interface_language` = 'en', `encrypted_password` = '$2a$04$Pj4wFhWz.4VOX0O0hcdvFuawf2gEHE4tDFM9U1mR70M3yRV2I9bRi', `slug` = 'user141396f', `created_at` = '2015-04-10 17:25:20', `updated_at` = '2015-04-10 17:25:20', `id` = 1, `main_role_id` = 1 WHERE `users`.`id` = 1[0m
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (11.9ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT  1 AS one FROM `users` WHERE (`users`.`id` IS NOT NULL) AND `users`.`slug` = 'user2415de1' LIMIT 1
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`name` = BINARY 'user2415de1' LIMIT 1[0m
+  [1m[35mUser Exists (1.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'user27221ae@volontari.at' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO `users` (`name`, `email`, `first_name`, `last_name`, `country`, `language`, `interface_language`, `encrypted_password`, `slug`, `created_at`, `updated_at`) VALUES ('user2415de1', 'user27221ae@volontari.at', 'Mister', 'User2415de1', 'Germany', 'en', 'en', '$2a$04$BvLgGwTKFAmiXkGTyC4MG.FtCTgmvsHY9hbj98QQsLuZnkdw998ju', 'user2415de1', '2015-04-10 17:25:20', '2015-04-10 17:25:20')[0m
+  [1m[35mRole Load (0.8ms)[0m  SELECT  `roles`.* FROM `roles` WHERE `roles`.`name` = 'User' LIMIT 1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE `users` SET `name` = 'user2415de1', `email` = 'user27221ae@volontari.at', `first_name` = 'Mister', `last_name` = 'User2415de1', `country` = 'Germany', `language` = 'en', `interface_language` = 'en', `encrypted_password` = '$2a$04$BvLgGwTKFAmiXkGTyC4MG.FtCTgmvsHY9hbj98QQsLuZnkdw998ju', `slug` = 'user2415de1', `created_at` = '2015-04-10 17:25:20', `updated_at` = '2015-04-10 17:25:20', `id` = 2, `main_role_id` = 1 WHERE `users`.`id` = 2[0m
+  [1m[35m (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mArea Load (0.8ms)[0m  [1mSELECT  `areas`.* FROM `areas`  ORDER BY position LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SAVEPOINT active_record_1
+  [1m[36mArea Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM `areas` WHERE (`areas`.`id` IS NOT NULL) AND `areas`.`slug` = 'area-1' LIMIT 1[0m
+  [1m[35mArea Exists (0.8ms)[0m  SELECT  1 AS one FROM `areas` WHERE `areas`.`name` = BINARY 'area 1' LIMIT 1
+  [1m[36mArea Load (1.0ms)[0m  [1mSELECT  `areas`.* FROM `areas` WHERE (areas.position IS NOT NULL) AND (1 = 1)  ORDER BY areas.position DESC LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `areas` (`name`, `slug`, `created_at`, `updated_at`, `position`) VALUES ('area 1', 'area-1', '2015-04-10 17:25:20', '2015-04-10 17:25:20', 1)
+  [1m[36m (14.8ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} runtime: 16.9760ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=products selector={"$or"=>[{"name.en"=>"Translation"}]} flags=[] limit=-1 skip=0 batch_size=nil fields={:_id=>1} runtime: 59.4410ms
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=products documents=[{"area_ids"=>[1], "_type"=>"Product::Translation", "_id"=>"translation", "name"=>{"en"=>"Translation"}, "user_id"=>2, "text"=>{"en"=>"Nemo iste maxime ut. Soluta consequatur asperiores minima consequuntur tempore. Et ut similique veniam amet deserunt ullam molestiae. Sunt rerum veritatis dolorem deserunt sunt officia. Provident sunt ab ipsam omnis temporibus."}, "updated_at"=>2015-04-10 17:25:20 UTC, "created_at"=>2015-04-10 17:25:20 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 2041.4610ms
+  [1m[35m (1594.7ms)[0m  SELECT COUNT(*) FROM `areas`
+  [1m[36mArea Load (0.8ms)[0m  [1mSELECT  `areas`.* FROM `areas`  ORDER BY position DESC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mArea Load (0.8ms)[0m  [1mSELECT `areas`.* FROM `areas` WHERE `areas`.`id` = 1  ORDER BY position[0m
+  [1m[35mArea Load (0.8ms)[0m  SELECT  `areas`.* FROM `areas` WHERE `areas`.`id` = 1  ORDER BY position LIMIT 1
+  [1m[36mProject Exists (23.0ms)[0m  [1mSELECT  1 AS one FROM `projects` WHERE (`projects`.`id` IS NOT NULL) AND `projects`.`slug` = 'project-144e7b5' LIMIT 1[0m
+  [1m[35mArea Exists (25.1ms)[0m  SELECT  1 AS one FROM `areas` WHERE (`areas`.`name` = BINARY 'area 1' AND `areas`.`id` != 1) LIMIT 1
+  [1m[36mProject Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM `projects` WHERE `projects`.`name` = BINARY 'project 144e7b5' LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `projects` (`user_id`, `name`, `text`, `product_id`, `slug`, `created_at`, `updated_at`) VALUES (1, 'project 144e7b5', 'Vel sit inventore quae cupiditate. Necessitatibus quis hic rerum molestias aperiam corrupti. Distinctio ipsa voluptatem et voluptatem. Porro est illum ipsa dolore. Placeat praesentium beatae dolorem illum deserunt. Consequatur cumque expedita quo eos nam magni quia. Error veritatis reiciendis et sapiente. Aut accusamus esse repudiandae sint. Et ut fugit qui omnis eum qui aliquam. Totam provident mollitia. Quidem reprehenderit voluptas optio unde natus qui adipisci. Consequatur adipisci quia vel laudantium suscipit repellat. Non nam quidem sint autem. Repellendus et laudantium. Officiis magnam reiciendis rem explicabo qui. Est rem quis. Beatae excepturi consequuntur ea aut ut qui. Distinctio quia magnam provident. Sunt vel ex at voluptatum mollitia fugit velit. Quia non suscipit maiores.', 'translation', 'project-144e7b5', '2015-04-10 17:25:29', '2015-04-10 17:25:29')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `areas_projects` (`area_id`, `project_id`) VALUES (1, 1)[0m
+  [1m[35mProjectUser Exists (31.4ms)[0m  SELECT  1 AS one FROM `projects_users` WHERE (`projects_users`.`user_id` = BINARY 1 AND `projects_users`.`project_id` = 1 AND `projects_users`.`vacancy_id` IS NULL) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `projects_users` (`project_id`, `user_id`) VALUES (1, 1)[0m
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=stories selector={"project_id"=>1, "name"=>"story10380c6"} flags=[] limit=-1 skip=0 batch_size=nil fields={:_id=>1} runtime: 383.1940ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=stories selector={"_slugs"=>{"$all"=>[/^story10380c6(?:-(\d+))?$/]}, "_id"=>{"$ne"=>BSON::ObjectId('5528078a61646d0323000000')}} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 188.3140ms
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=stories documents=[{"state"=>"initialized", "_id"=>BSON::ObjectId('5528078a61646d0323000000'), "_slugs"=>["story10380c6"], "_type"=>"Product::Translation::Story", "project_id"=>1, "name"=>"story10380c6", "text"=>"Sequi minus deleniti quod nisi numquam modi. Eaque voluptas iste aspernatur animi. Sit non neque officiis quia et culpa. Excepturi atque et quia sint nesciunt possimus. Unde sed iure sint ut id quae doloribus. Velit tenetur voluptates maiores pariatur sit quis. Et aperiam placeat rerum. Distinctio sequi cum. Aut dicta sit perspiciatis consequatur labore distinctio. Id doloremque alias at.", "event"=>"initialization", "state_before"=>"new", "input_language"=>"en", "output_languages"=>["de", "fr"], "product_id"=>"translation", "offeror_id"=>1, "updated_at"=>2015-04-10 17:25:31 UTC, "created_at"=>2015-04-10 17:25:31 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 86.7820ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "_type"=>{"$in"=>["Product::Translation::Task"]}} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 93.9620ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=columns selector={"story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "_type"=>{"$in"=>["Product::Translation::Column"]}} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 13.9070ms
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.8ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.8ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (1.0ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.8ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  MOPED: 127.0.0.1:27017 UPDATE       database=voluntary_translation_test collection=stories selector={"_id"=>BSON::ObjectId('5528078a61646d0323000000')} update={"$set"=>{"event"=>"setup_tasks", "state_before"=>"initialized", "state"=>"tasks_defined", "updated_at"=>2015-04-10 17:25:31 UTC}} flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 220.2170ms
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.6ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=columns documents=[{"_id"=>BSON::ObjectId('5528078b61646d0323010000'), "_type"=>"Product::Translation::Column", "key"=>"franchises.name", "text"=>"Name", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "product_id"=>"translation", "updated_at"=>2015-04-10 17:25:31 UTC, "created_at"=>2015-04-10 17:25:31 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 88.0200ms
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=columns documents=[{"_id"=>BSON::ObjectId('5528078b61646d0323020000'), "_type"=>"Product::Translation::Column", "key"=>"franchises.text", "text"=>"Text", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "product_id"=>"translation", "updated_at"=>2015-04-10 17:25:31 UTC, "created_at"=>2015-04-10 17:25:31 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 1.5530ms
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.8ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.9ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.8ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.8ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  MOPED: 127.0.0.1:27017 UPDATE       database=voluntary_translation_test collection=stories selector={"_id"=>BSON::ObjectId('5528078a61646d0323000000')} update={"$set"=>{"event"=>"activate", "state_before"=>"tasks_defined", "state"=>"active", "updated_at"=>2015-04-10 17:25:31 UTC}} flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 2.0860ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"name"=>"franchises.name", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "output_language"=>"de"} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 1.3940ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"_slugs"=>{"$all"=>[/^franchises\-dot\-name(?:-(\d+))?$/]}, "_id"=>{"$ne"=>BSON::ObjectId('5528078b61646d0323030000')}} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 1.5720ms
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=tasks documents=[{"state"=>"new", "_id"=>BSON::ObjectId('5528078b61646d0323030000'), "_slugs"=>["franchises-dot-name"], "_type"=>"Product::Translation::Task", "column_id"=>BSON::ObjectId('5528078b61646d0323010000'), "name"=>"franchises.name", "text"=>"Name", "input_language"=>"en", "output_language"=>"de", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "product_id"=>"translation", "offeror_id"=>1, "updated_at"=>2015-04-10 17:25:31 UTC, "created_at"=>2015-04-10 17:25:31 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 178.8670ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"name"=>"franchises.text", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "output_language"=>"de"} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 43.1100ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"_slugs"=>{"$all"=>[/^franchises\-dot\-text(?:-(\d+))?$/]}, "_id"=>{"$ne"=>BSON::ObjectId('5528078b61646d0323040000')}} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 100.3280ms
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=tasks documents=[{"state"=>"new", "_id"=>BSON::ObjectId('5528078b61646d0323040000'), "_slugs"=>["franchises-dot-text"], "_type"=>"Product::Translation::Task", "column_id"=>BSON::ObjectId('5528078b61646d0323020000'), "name"=>"franchises.text", "text"=>"Text", "input_language"=>"en", "output_language"=>"de", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "product_id"=>"translation", "offeror_id"=>1, "updated_at"=>2015-04-10 17:25:31 UTC, "created_at"=>2015-04-10 17:25:31 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 1.6910ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"name"=>"franchises.name", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "output_language"=>"fr"} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 1.3570ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"_slugs"=>{"$all"=>[/^franchises\-dot\-name(?:-(\d+))?$/]}, "_id"=>{"$ne"=>BSON::ObjectId('5528078b61646d0323050000')}} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 64.4430ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=stories selector={"$query"=>{"_id"=>BSON::ObjectId('5528078a61646d0323000000'), "_type"=>{"$in"=>["Product::Translation::Story"]}}, "$orderby"=>{:_id=>1}} flags=[] limit=-1 skip=0 batch_size=nil fields=nil runtime: 47.7620ms
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=tasks documents=[{"state"=>"new", "_id"=>BSON::ObjectId('5528078b61646d0323050000'), "_slugs"=>["franchises-dot-name-1"], "_type"=>"Product::Translation::Task", "column_id"=>BSON::ObjectId('5528078b61646d0323010000'), "name"=>"franchises.name", "text"=>"Name", "input_language"=>"en", "output_language"=>"fr", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "product_id"=>"translation", "offeror_id"=>1, "updated_at"=>2015-04-10 17:25:32 UTC, "created_at"=>2015-04-10 17:25:32 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 52.4520ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"name"=>"franchises.text", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "output_language"=>"fr"} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 1.2990ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=tasks selector={"_slugs"=>{"$all"=>[/^franchises\-dot\-text(?:-(\d+))?$/]}, "_id"=>{"$ne"=>BSON::ObjectId('5528078c61646d0323060000')}} flags=[] limit=0 skip=0 batch_size=nil fields=nil runtime: 1.8870ms
+  MOPED: 127.0.0.1:27017 QUERY        database=voluntary_translation_test collection=stories selector={"$query"=>{"_id"=>BSON::ObjectId('5528078a61646d0323000000'), "_type"=>{"$in"=>["Product::Translation::Story"]}}, "$orderby"=>{:_id=>1}} flags=[] limit=-1 skip=0 batch_size=nil fields=nil runtime: 1.8810ms
+  [1m[36mProject Load (0.9ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.7ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  [1m[36mProject Load (0.6ms)[0m  [1mSELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1[0m
+  [1m[35mProject Load (0.8ms)[0m  SELECT  `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  MOPED: 127.0.0.1:27017 INSERT       database=voluntary_translation_test collection=tasks documents=[{"state"=>"new", "_id"=>BSON::ObjectId('5528078c61646d0323060000'), "_slugs"=>["franchises-dot-text-1"], "_type"=>"Product::Translation::Task", "column_id"=>BSON::ObjectId('5528078b61646d0323020000'), "name"=>"franchises.text", "text"=>"Text", "input_language"=>"en", "output_language"=>"fr", "story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "product_id"=>"translation", "offeror_id"=>1, "updated_at"=>2015-04-10 17:25:32 UTC, "created_at"=>2015-04-10 17:25:32 UTC}] flags=[]
+                         COMMAND      database=voluntary_translation_test command={:getlasterror=>1, :w=>1} runtime: 1.6770ms
+  MOPED: 127.0.0.1:27017 COMMAND      database=voluntary_translation_test command={:count=>"columns", :query=>{"story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "_type"=>{"$in"=>["Product::Translation::Column"]}}} runtime: 140.8450ms
+  MOPED: 127.0.0.1:27017 COMMAND      database=voluntary_translation_test command={:count=>"tasks", :query=>{"story_id"=>BSON::ObjectId('5528078a61646d0323000000'), "_type"=>{"$in"=>["Product::Translation::Task"]}}} runtime: 1.3230ms
+  [1m[36m (6.2ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.5ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (83.4ms)[0m  [1mSELECT DATABASE() as db[0m
+  [1m[35m (109.5ms)[0m  select table_name from information_schema.views where table_schema = 'voluntary_translation_test'
+  [1m[36m (562.8ms)[0m  [1mTRUNCATE TABLE `areas`;[0m
+  [1m[35m (388.0ms)[0m  TRUNCATE TABLE `areas_projects`;
+  [1m[36m (116.6ms)[0m  [1mTRUNCATE TABLE `areas_users`;[0m
+  [1m[35m (57.7ms)[0m  TRUNCATE TABLE `candidatures`;
+  [1m[36m (79.9ms)[0m  [1mTRUNCATE TABLE `comments`;[0m
+  [1m[35m (56.3ms)[0m  TRUNCATE TABLE `friendly_id_slugs`;
+  [1m[36m (308.5ms)[0m  [1mTRUNCATE TABLE `likes`;[0m
+  [1m[35m (15.9ms)[0m  TRUNCATE TABLE `list_items`;
+  [1m[36m (51.5ms)[0m  [1mTRUNCATE TABLE `lists`;[0m
+  [1m[35m (43.7ms)[0m  TRUNCATE TABLE `mongo_db_documents`;
+  [1m[36m (32.9ms)[0m  [1mTRUNCATE TABLE `organizations`;[0m
+  [1m[35m (19.3ms)[0m  TRUNCATE TABLE `professions`;
+  [1m[36m (72.8ms)[0m  [1mTRUNCATE TABLE `projects`;[0m
+  [1m[35m (52.8ms)[0m  TRUNCATE TABLE `projects_users`;
+  [1m[36m (31.9ms)[0m  [1mTRUNCATE TABLE `roles`;[0m
+  [1m[35m (20.8ms)[0m  TRUNCATE TABLE `things`;
+  [1m[36m (69.0ms)[0m  [1mTRUNCATE TABLE `users`;[0m
+  [1m[35m (75.2ms)[0m  TRUNCATE TABLE `users_roles`;
+  [1m[36m (66.1ms)[0m  [1mTRUNCATE TABLE `vacancies`;[0m
+  [1m[35m (0.4ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
