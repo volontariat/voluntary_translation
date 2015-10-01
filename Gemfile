@@ -5,7 +5,7 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'voluntary', github: 'volontariat/voluntary', branch: 'rails_4.2.1'
+gem 'voluntary', github: 'volontariat/voluntary'
 
 # core
 gem 'rack-cors', '~> 0.2.4', require: 'rack/cors'
