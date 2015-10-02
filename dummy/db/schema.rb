@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410165339) do
+ActiveRecord::Schema.define(version: 20151002105362) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "ancestry",       limit: 255
@@ -46,23 +46,30 @@ ActiveRecord::Schema.define(version: 20150410165339) do
   add_index "areas_users", ["area_id"], name: "index_areas_users_on_area_id", using: :btree
   add_index "areas_users", ["user_id"], name: "index_areas_users_on_user_id", using: :btree
 
-  create_table "candidatures", force: :cascade do |t|
-    t.integer  "vacancy_id",    limit: 4
-    t.integer  "offeror_id",    limit: 4
-    t.string   "name",          limit: 255
-    t.string   "slug",          limit: 255
-    t.text     "text",          limit: 65535
-    t.string   "state",         limit: 255
+  create_table "argument_topics", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.text     "text",       limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "resource_type", limit: 255
-    t.integer  "resource_id",   limit: 4
   end
 
-  add_index "candidatures", ["resource_id", "resource_type", "vacancy_id"], name: "index_candidatures_on_resource_and_vacancy", unique: true, using: :btree
-  add_index "candidatures", ["slug"], name: "index_candidatures_on_slug", unique: true, using: :btree
-  add_index "candidatures", ["vacancy_id", "name"], name: "index_candidatures_on_vacancy_id_and_name", unique: true, using: :btree
-  add_index "candidatures", ["vacancy_id"], name: "index_candidatures_on_vacancy_id", using: :btree
+  add_index "argument_topics", ["name"], name: "index_argument_topics_on_name", unique: true, using: :btree
+
+  create_table "arguments", force: :cascade do |t|
+    t.string   "argumentable_type", limit: 255
+    t.integer  "argumentable_id",   limit: 4
+    t.integer  "topic_id",          limit: 4
+    t.string   "value",             limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",           limit: 4
+    t.boolean  "vote"
+    t.integer  "likes_count",       limit: 4,   default: 0
+    t.integer  "dislikes_count",    limit: 4,   default: 0
+  end
+
+  add_index "arguments", ["argumentable_id", "argumentable_type"], name: "arguments_index_on_argumentable", using: :btree
+  add_index "arguments", ["topic_id", "argumentable_id", "argumentable_type"], name: "arguments_index_on_argumentable_topic", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "commentable_type", limit: 255
@@ -93,7 +100,7 @@ ActiveRecord::Schema.define(version: 20150410165339) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "likes", force: :cascade do |t|
-    t.boolean  "positive",    limit: 1,  default: true
+    t.boolean  "positive",               default: true
     t.integer  "target_id",   limit: 4
     t.string   "target_type", limit: 60,                null: false
     t.integer  "user_id",     limit: 4
@@ -170,26 +177,13 @@ ActiveRecord::Schema.define(version: 20150410165339) do
 
   create_table "projects_users", force: :cascade do |t|
     t.integer "project_id", limit: 4
-    t.integer "vacancy_id", limit: 4
-    t.integer "role_id",    limit: 4
     t.integer "user_id",    limit: 4
     t.string  "state",      limit: 255
   end
 
-  add_index "projects_users", ["project_id", "user_id", "vacancy_id"], name: "index_projects_users_on_project_id_and_user_id_and_vacancy_id", unique: true, using: :btree
+  add_index "projects_users", ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id", unique: true, using: :btree
   add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
-  add_index "projects_users", ["role_id"], name: "index_projects_users_on_role_id", using: :btree
   add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
-  add_index "projects_users", ["vacancy_id"], name: "index_projects_users_on_vacancy_id", using: :btree
-
-  create_table "roles", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "state",      limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "public",     limit: 1,   default: false
-    t.string   "type",       limit: 255
-  end
 
   create_table "things", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -241,11 +235,12 @@ ActiveRecord::Schema.define(version: 20150410165339) do
     t.string   "interface_language",      limit: 255
     t.string   "employment_relationship", limit: 255
     t.integer  "profession_id",           limit: 4
-    t.integer  "main_role_id",            limit: 4
     t.text     "foreign_languages",       limit: 65535
     t.string   "provider",                limit: 255
     t.string   "uid",                     limit: 255
     t.string   "lastfm_user_name",        limit: 255
+    t.string   "api_key",                 limit: 32
+    t.integer  "roles",                   limit: 8,     default: 0,  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -253,36 +248,5 @@ ActiveRecord::Schema.define(version: 20150410165339) do
   add_index "users", ["profession_id"], name: "index_users_on_profession_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
-
-  create_table "users_roles", force: :cascade do |t|
-    t.integer "role_id", limit: 4
-    t.integer "user_id", limit: 4
-    t.string  "state",   limit: 255
-  end
-
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", unique: true, using: :btree
-
-  create_table "vacancies", force: :cascade do |t|
-    t.string   "type",            limit: 255
-    t.integer  "project_id",      limit: 4
-    t.integer  "offeror_id",      limit: 4
-    t.integer  "author_id",       limit: 4
-    t.integer  "project_user_id", limit: 4
-    t.string   "name",            limit: 255
-    t.string   "slug",            limit: 255
-    t.text     "text",            limit: 65535
-    t.integer  "limit",           limit: 4,     default: 1
-    t.string   "state",           limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "resource_type",   limit: 255
-    t.integer  "resource_id",     limit: 4
-  end
-
-  add_index "vacancies", ["offeror_id"], name: "index_vacancies_on_offeror_id", using: :btree
-  add_index "vacancies", ["project_id", "name"], name: "index_vacancies_on_project_id_and_name", unique: true, using: :btree
-  add_index "vacancies", ["project_id"], name: "index_vacancies_on_project_id", using: :btree
-  add_index "vacancies", ["project_user_id"], name: "index_vacancies_on_project_user_id", using: :btree
-  add_index "vacancies", ["slug"], name: "index_vacancies_on_slug", unique: true, using: :btree
 
 end
